@@ -30,6 +30,4 @@ def test_given_two_request_should_have_different_correlation_id(
     assert "X-Correlation-ID" in response_1.headers
     assert "X-Correlation-ID" in response_2.headers
 
-    assert (
-        response_1.headers["X-Correlation-ID"] != response_2.headers["X-Correlation-ID"]
-    )
+    assert response_1.headers["X-Correlation-ID"] != response_2.headers["X-Correlation-ID"]

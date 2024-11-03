@@ -17,4 +17,3 @@ class EventDto(BaseModel):
 class IntegrationEvent(BaseModel):
     event: EventDto
     correlation_id: str | None
-

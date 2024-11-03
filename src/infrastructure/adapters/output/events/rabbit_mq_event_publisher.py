@@ -37,7 +37,5 @@ class RabbitMqEventPublisher(EventPublisher):
             exchange=f"{event.source}.{event.name}",
             exchange_type="fanout",
         )
-        self._channel.basic_publish(
-            exchange=f"{event.source}.{event.name}", routing_key="", body=to_json(event)
-        )
+        self._channel.basic_publish(exchange=f"{event.source}.{event.name}", routing_key="", body=to_json(event))
         logger.info(f"Published event {event.name} with id {event.id}")

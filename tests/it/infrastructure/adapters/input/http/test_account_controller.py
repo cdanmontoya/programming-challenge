@@ -60,9 +60,7 @@ def test_given_no_accounts_when_updating_should_return_error(
     test_client: TestClient,
 ):
     request = UpdateAccountRequestDtoFactory.create()
-    response = test_client.put(
-        f"/accounts/{request.id}", json=json.loads(request.model_dump_json())
-    )
+    response = test_client.put(f"/accounts/{request.id}", json=json.loads(request.model_dump_json()))
 
     assert response.status_code == 400
 
@@ -76,13 +74,9 @@ def test_given_an_existing_account_when_updating_should_return_ok(
     list_response = test_client.get("/accounts")
     account_id = list_response.json()["accounts"][0]["id"]
 
-    update_request = UpdateAccountRequestDtoFactory.create(
-        id=account_id, email="new@email.com"
-    )
+    update_request = UpdateAccountRequestDtoFactory.create(id=account_id, email="new@email.com")
 
-    update_response = test_client.put(
-        f"/accounts/{account_id}", json=json.loads(update_request.model_dump_json())
-    )
+    update_response = test_client.put(f"/accounts/{account_id}", json=json.loads(update_request.model_dump_json()))
     modified_account = test_client.get(f"/accounts/{account_id}")
 
     assert update_response.status_code == 200

@@ -74,9 +74,7 @@ class AccountController:
         self.router.add_api_route(ACCOUNT_PATH, self.delete, methods=["DELETE"])
         self.router.add_api_route(ACCOUNT_PATH, self.update, methods=["PUT"])
 
-    async def insert(
-        self, request: InsertAccountRequestDto, response: Response
-    ) -> AccountDto | Error:
+    async def insert(self, request: InsertAccountRequestDto, response: Response) -> AccountDto | Error:
         logger.info("Insert account request received")
         insert_account = InsertAccountRequestDtoTranslator.of(request)
         account_result = self.__insert_account_service.insert(insert_account)
@@ -114,9 +112,7 @@ class AccountController:
         else:
             return AccountDtoTranslator.of(account)
 
-    async def update(
-        self, request: UpdateAccountRequestDto, response: Response
-    ) -> AccountDto | Error:
+    async def update(self, request: UpdateAccountRequestDto, response: Response) -> AccountDto | Error:
         logger.info("Updated account request received")
         update_account = UpdateAccountRequestDtoTranslator.of(request)
         account_result = self.__update_account_service.update(update_account)

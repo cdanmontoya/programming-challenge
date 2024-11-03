@@ -29,11 +29,7 @@ def publishes(successful_event: type[Event], error_event: type[Event]) -> Any:
     def decorator(func: Callable[..., Callable[..., Any]]) -> Callable[..., Any]:
         def wrapper(self: object, *args, **kwargs) -> Any:
             result = func(self, *args, **kwargs)
-            event_instance = (
-                successful_event(result)
-                if not isinstance(result, Error)
-                else error_event(result)
-            )
+            event_instance = successful_event(result) if not isinstance(result, Error) else error_event(result)
             self._event_publisher.publish(event_instance)
             return result
 

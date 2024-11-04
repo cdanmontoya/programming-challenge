@@ -6,4 +6,5 @@ class CompareNameRequestDtoTranslator:
 
     @staticmethod
     def of(request_dto: CompareNameRequestDto) -> CompareName:
-        return CompareName(name=request_dto.name, threshold=request_dto.threshold)
+        threshold = request_dto.threshold if request_dto.threshold else 0.8
+        return CompareName(name=request_dto.name, threshold=threshold)

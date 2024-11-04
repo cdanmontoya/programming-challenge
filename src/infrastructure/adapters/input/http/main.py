@@ -15,6 +15,6 @@ if __name__ == "__main__":
     uvicorn.run(
         "src.infrastructure.adapters.input.http.main:app",
         port=int(os.getenv("APP_PORT", 8080)),
-        host="0.0.0.0",
+        host=os.getenv("APP_HOST_BINDING", "127.0.0.1"),
         reload=True,
     )

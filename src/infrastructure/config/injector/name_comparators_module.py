@@ -6,4 +6,4 @@ from src.infrastructure.adapters.output.name_comparator.difflib_name_comparator 
 
 class NameComparatorsModule(Module):
     def configure(self, binder: Binder) -> None:
-        binder.bind(interface=NameComparator, to=DiffLibNameComparator)
+        binder.bind(interface=NameComparator, to=DiffLibNameComparator)  # type: ignore

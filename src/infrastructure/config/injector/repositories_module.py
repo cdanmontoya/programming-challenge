@@ -6,4 +6,4 @@ from src.infrastructure.adapters.output.repositories.name.name_repository_dict i
 
 class RepositoriesModule(Module):
     def configure(self, binder: Binder) -> None:
-        binder.bind(interface=NameRepository, to=NameRepositoryDict)
+        binder.bind(interface=NameRepository, to=NameRepositoryDict)  # type: ignore

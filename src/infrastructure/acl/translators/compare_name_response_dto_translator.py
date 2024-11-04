@@ -6,9 +6,9 @@ class CompareNameResponseDtoTranslator:
 
     @staticmethod
     def of(names: list[tuple[Name, float]]) -> CompareNameResponseDto:
-        names = {
+        mapped_names = {
             name_similarity[0].id: {"name": name_similarity[0].full_name, "similarity": name_similarity[1]}
             for name_similarity in names
         }
 
-        return CompareNameResponseDto.model_validate(names)
+        return CompareNameResponseDto.model_validate(mapped_names)
